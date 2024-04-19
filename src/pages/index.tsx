@@ -17,10 +17,10 @@ const Home = () => {
     console.log(x, y);
     const newBoard = structuredClone(board);
     newBoard[y][x] = turnColor;
-    if (turnColor === 1) {
-      setTurnColor(2);
-    } else {
-      setTurnColor(1);
+    setTurnColor(2 / turnColor);
+    if (board[y + 1] !== undefined && board[y + 1][x] === 2 / turnColor) {
+      newBoard[y][x] = turnColor;
+      setTurnColor(2 / turnColor);
     }
     setBoard(newBoard);
   };
