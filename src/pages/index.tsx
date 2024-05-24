@@ -25,13 +25,26 @@ const Home = () => {
   ]);
   const clickHandler = (x: number, y: number) => {
     console.log(x, y);
+
     const newBoard = structuredClone(board);
     for (const direction of directions) {
-      if (newBoard[y + direction[0]][x + direction[1]] === 3 - turnColor) {
+      if (
+        newBoard[y + direction[0]] !== undefined &&
+        newBoard[y + direction[0]][x + direction[1]] === 3 - turnColor
+      ) {
         for (let i = 1; i < 9; i++) {
-          if (newBoard[y + direction[0] * i][x + direction[1] * i] === 3 - turnColor) {
+          if (
+            newBoard[y + direction[0] * i] !== undefined &&
+            newBoard[y + direction[0] * i][x + direction[1] * i] === 3 - turnColor
+          ) {
             continue;
-          } else if (newBoard[y + direction[0] * i][x + direction[1] * i] === turnColor) {
+          } else if (
+            newBoard[y + direction[0] * i] !== undefined &&
+            newBoard[y + direction[0] * i][x + direction[1] * i] === turnColor
+          ) {
+            for (let s = 1; s < i; s++) {
+              newBoard[y + direction[0] * s][x + direction[1] * s] = turnColor;
+            }
             newBoard[y][x] = turnColor;
             setTurnColor(2 / turnColor);
             setBoard(newBoard);
@@ -49,6 +62,11 @@ const Home = () => {
   };
   return (
     <div className={styles.container}>
+      <div className={styles.informationBoard}>
+        <div className={styles.scoreBoard}>{board.flat().filter((cell) => cell === 1).length}</div>
+        <div className={styles.turnBoard} />
+        <div className={styles.scoreBoard}>{board.flat().filter((cell) => cell === 2).length}</div>
+      </div>
       <div className={styles.board}>
         {board.map((row, y) =>
           row.map((color, x) => (

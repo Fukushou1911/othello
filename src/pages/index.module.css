@@ -31,3 +31,38 @@
   background-color: white;
   border-radius: 50%;
 }
+
+.informationBoard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 640px;
+  height: 120px;
+  margin-bottom: 80px;
+  background-color: rgb(9 95 9);
+  border: 2px solid #111;
+}
+
+.scoreBoard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 80px;
+  margin-right: 10px;
+  margin-left: 10px;
+  font-size: 60px;
+  background-color: rgb(9 95 9);
+  border: 2px solid black;
+}
+
+.turnBoard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 80px;
+  margin-bottom: 20;
+  background-color: rgb(9 95 9);
+  border: 2px solid black;
+}
